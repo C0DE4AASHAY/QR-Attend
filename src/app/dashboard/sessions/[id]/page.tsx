@@ -136,6 +136,7 @@ export default function SessionDetailPage() {
                     <div className="navbar-links">
                         <Link href="/dashboard">Dashboard</Link>
                         <Link href="/dashboard/analytics">Analytics</Link>
+                        <Link href="/dashboard/profile">Profile</Link>
                     </div>
                 </div>
             </nav>
@@ -145,31 +146,32 @@ export default function SessionDetailPage() {
                     {/* Header */}
                     <div className="detail-header">
                         <div>
-                            <Link href="/dashboard" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: 8, display: 'inline-block' }}>
+                            <Link href="/dashboard" style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', marginBottom: 10, display: 'inline-flex', alignItems: 'center', gap: '6px', transition: 'color 0.2s' }}>
                                 ← Back to Dashboard
                             </Link>
                             <h1>{session.title}</h1>
                             {session.description && (
-                                <p style={{ color: 'var(--text-secondary)', marginTop: 4 }}>{session.description}</p>
+                                <p style={{ color: 'var(--text-secondary)', marginTop: 6, lineHeight: 1.6 }}>{session.description}</p>
                             )}
-                            <div style={{ display: 'flex', gap: 16, marginTop: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+                            <div style={{ display: 'flex', gap: 16, marginTop: 14, alignItems: 'center', flexWrap: 'wrap' }}>
                                 <span className={`session-status ${session.status}`} style={{
-                                    padding: '6px 14px',
+                                    padding: '6px 16px',
                                     borderRadius: 'var(--radius-full)',
-                                    fontSize: '0.8rem',
-                                    fontWeight: 600,
+                                    fontSize: '0.78rem',
+                                    fontWeight: 700,
                                     textTransform: 'uppercase',
-                                    letterSpacing: '0.5px',
-                                    background: session.status === 'active' ? 'rgba(0, 212, 170, 0.15)' : session.status === 'expired' ? 'rgba(255, 180, 50, 0.15)' : 'rgba(255, 107, 107, 0.15)',
+                                    letterSpacing: '0.8px',
+                                    fontFamily: 'var(--font-mono)',
+                                    background: session.status === 'active' ? 'rgba(0, 229, 184, 0.12)' : session.status === 'expired' ? 'rgba(255, 167, 66, 0.12)' : 'rgba(255, 92, 106, 0.12)',
                                     color: session.status === 'active' ? 'var(--accent-success)' : session.status === 'expired' ? '#e6a817' : 'var(--accent-danger)',
                                 }}>
                                     {session.status}
                                 </span>
-                                <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                                <span style={{ color: 'var(--text-muted)', fontSize: '0.82rem', fontFamily: 'var(--font-mono)' }}>
                                     Created {new Date(session.created_at).toLocaleString()}
                                 </span>
                                 {session.expires_at && (
-                                    <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                                    <span style={{ color: 'var(--text-muted)', fontSize: '0.82rem', fontFamily: 'var(--font-mono)' }}>
                                         {session.status === 'expired' ? 'Expired' : 'Expires'} {new Date(session.expires_at).toLocaleString()}
                                     </span>
                                 )}
@@ -195,13 +197,13 @@ export default function SessionDetailPage() {
                         {/* Left: QR Code & Share Link */}
                         <div>
                             <div className="card" style={{ textAlign: 'center' }}>
-                                <h3 style={{ marginBottom: 20, fontWeight: 700 }}>📱 QR Code</h3>
+                                <h3 style={{ marginBottom: 22, fontWeight: 700, fontSize: '1.1rem' }}>📱 QR Code</h3>
                                 {qrDataUrl && (
                                     <div className="qr-container" style={{ margin: '0 auto' }}>
                                         <img src={qrDataUrl} alt="QR Code" style={{ width: 280, height: 280 }} />
                                     </div>
                                 )}
-                                <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginTop: 16 }}>
+                                <p style={{ color: 'var(--text-secondary)', fontSize: '0.84rem', marginTop: 18 }}>
                                     Students scan this to mark attendance
                                 </p>
                                 <div className="share-link">
@@ -216,8 +218,8 @@ export default function SessionDetailPage() {
                         {/* Right: Live Attendees */}
                         <div>
                             <div className="card">
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
-                                    <h3 style={{ fontWeight: 700 }}>👥 Attendees ({attendees.length})</h3>
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 22 }}>
+                                    <h3 style={{ fontWeight: 700, fontSize: '1.1rem' }}>👥 Attendees ({attendees.length})</h3>
                                     {session.status === 'active' && (
                                         <div className="live-indicator">
                                             <span className="live-dot"></span>

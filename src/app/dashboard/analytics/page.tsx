@@ -92,12 +92,12 @@ export default function AnalyticsPage() {
         },
         scales: {
             x: {
-                grid: { color: 'rgba(255,255,255,0.05)' },
-                ticks: { color: '#a0a0b8', font: { family: 'Inter' } },
+                grid: { color: 'rgba(255,255,255,0.04)' },
+                ticks: { color: '#9d9db8', font: { family: 'Outfit' } },
             },
             y: {
-                grid: { color: 'rgba(255,255,255,0.05)' },
-                ticks: { color: '#a0a0b8', font: { family: 'Inter' } },
+                grid: { color: 'rgba(255,255,255,0.04)' },
+                ticks: { color: '#9d9db8', font: { family: 'Outfit' } },
                 beginAtZero: true,
             },
         },
@@ -111,12 +111,15 @@ export default function AnalyticsPage() {
         datasets: [{
             label: 'Check-ins',
             data: data.dailyTrend.map(d => d.count),
-            borderColor: '#6c63ff',
-            backgroundColor: 'rgba(108, 99, 255, 0.1)',
+            borderColor: '#7c6aff',
+            backgroundColor: 'rgba(124, 106, 255, 0.08)',
             fill: true,
             tension: 0.4,
-            pointRadius: 4,
-            pointBackgroundColor: '#6c63ff',
+            pointRadius: 5,
+            pointBackgroundColor: '#7c6aff',
+            pointBorderColor: '#0d0d1a',
+            pointBorderWidth: 2,
+            pointHoverRadius: 7,
         }],
     };
 
@@ -126,9 +129,10 @@ export default function AnalyticsPage() {
             label: 'Attendees',
             data: data.sessions.slice(0, 10).map(s => s.attendeeCount),
             backgroundColor: data.sessions.slice(0, 10).map((_, i) =>
-                `hsla(${240 + i * 15}, 70%, 65%, 0.7)`
+                `hsla(${250 + i * 12}, 75%, 68%, 0.75)`
             ),
-            borderRadius: 8,
+            borderRadius: 10,
+            borderSkipped: false,
         }],
     };
 
@@ -138,8 +142,9 @@ export default function AnalyticsPage() {
         labels: ['Active', 'Closed'],
         datasets: [{
             data: [activeCount, closedCount],
-            backgroundColor: ['rgba(0, 212, 170, 0.8)', 'rgba(255, 107, 107, 0.8)'],
+            backgroundColor: ['rgba(0, 229, 184, 0.8)', 'rgba(255, 92, 106, 0.8)'],
             borderWidth: 0,
+            hoverOffset: 8,
         }],
     };
 
@@ -154,6 +159,7 @@ export default function AnalyticsPage() {
                     <div className="navbar-links">
                         <Link href="/dashboard">Dashboard</Link>
                         <Link href="/dashboard/analytics" className="active">Analytics</Link>
+                        <Link href="/dashboard/profile">Profile</Link>
                         <button onClick={handleLogout}>Logout</button>
                     </div>
                 </div>
@@ -164,7 +170,7 @@ export default function AnalyticsPage() {
                     <div className="dashboard-header">
                         <div>
                             <h1>📊 Analytics</h1>
-                            <p style={{ color: 'var(--text-secondary)', marginTop: 4 }}>Track attendance trends and insights</p>
+                            <p style={{ color: 'var(--text-secondary)', marginTop: 6, fontSize: '0.95rem' }}>Track attendance trends and insights</p>
                         </div>
                     </div>
 
@@ -214,7 +220,7 @@ export default function AnalyticsPage() {
                                             plugins: {
                                                 legend: {
                                                     position: 'bottom',
-                                                    labels: { color: '#a0a0b8', font: { family: 'Inter' }, padding: 20 },
+                                                    labels: { color: '#9d9db8', font: { family: 'Outfit' }, padding: 24 },
                                                 },
                                             },
                                         }}

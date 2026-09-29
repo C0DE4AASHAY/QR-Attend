@@ -109,6 +109,7 @@ export default function DashboardPage() {
                     <div className="navbar-links">
                         <Link href="/dashboard" className="active">Dashboard</Link>
                         <Link href="/dashboard/analytics">Analytics</Link>
+                        <Link href="/dashboard/profile">Profile</Link>
                         <button onClick={handleLogout}>Logout</button>
                     </div>
                 </div>
@@ -119,7 +120,7 @@ export default function DashboardPage() {
                     <div className="dashboard-header">
                         <div>
                             <h1>Welcome, {user?.name} 👋</h1>
-                            <p style={{ color: 'var(--text-secondary)', marginTop: 4 }}>Manage your attendance sessions</p>
+                            <p style={{ color: 'var(--text-secondary)', marginTop: 6, fontSize: '0.95rem' }}>Manage your attendance sessions</p>
                         </div>
                         <button className="btn btn-primary" onClick={() => setShowModal(true)}>
                             ➕ New Session
@@ -169,7 +170,7 @@ export default function DashboardPage() {
                                             </span>
                                         </div>
                                         {session.description && (
-                                            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: 12 }}>
+                                            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: 14, lineHeight: 1.6 }}>
                                                 {session.description}
                                             </p>
                                         )}
@@ -189,7 +190,7 @@ export default function DashboardPage() {
             {showModal && (
                 <div className="modal-overlay" onClick={(e) => { if (e.target === e.currentTarget) setShowModal(false); }}>
                     <div className="modal">
-                        <h2>Create New Session</h2>
+                        <h2>✨ Create New Session</h2>
                         <form onSubmit={handleCreateSession}>
                             <div className="input-group">
                                 <label htmlFor="session-title">Session Title</label>
@@ -231,7 +232,7 @@ export default function DashboardPage() {
                                     Cancel
                                 </button>
                                 <button type="submit" className="btn btn-primary" disabled={creating}>
-                                    {creating ? 'Creating...' : 'Create Session'}
+                                    {creating ? 'Creating...' : '🚀 Create Session'}
                                 </button>
                             </div>
                         </form>

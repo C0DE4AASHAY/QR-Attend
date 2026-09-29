@@ -90,13 +90,13 @@ export default function AttendPage() {
         return (
             <div className="attend-page">
                 <div className="attend-card text-center">
-                    <div style={{ fontSize: '3rem', marginBottom: 16 }}>❌</div>
+                    <div style={{ fontSize: '3.5rem', marginBottom: 18, animation: 'float 4s ease-in-out infinite' }}>❌</div>
                     <h1>Session Not Found</h1>
-                    <p style={{ color: 'var(--text-secondary)', marginTop: 8 }}>
+                    <p style={{ color: 'var(--text-secondary)', marginTop: 10, lineHeight: 1.6 }}>
                         This attendance session does not exist or has been deleted.
                     </p>
                     <Link href="/" className="btn btn-primary mt-24" style={{ display: 'inline-flex' }}>
-                        Go Home
+                        🏠 Go Home
                     </Link>
                 </div>
             </div>
@@ -107,23 +107,27 @@ export default function AttendPage() {
         return (
             <div className="attend-page">
                 <div className="attend-card text-center">
-                    <div style={{ fontSize: '4rem', marginBottom: 16 }}>✅</div>
-                    <h1 style={{ color: 'var(--accent-success)' }}>Attendance Marked!</h1>
-                    <p style={{ color: 'var(--text-secondary)', marginTop: 8, fontSize: '1.05rem' }}>
-                        Your attendance for <strong>{session.title}</strong> has been recorded successfully.
+                    <div style={{
+                        fontSize: '4.5rem',
+                        marginBottom: 18,
+                        animation: 'scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both',
+                    }}>✅</div>
+                    <h1 style={{ color: 'var(--accent-success)', fontSize: '1.6rem' }}>Attendance Marked!</h1>
+                    <p style={{ color: 'var(--text-secondary)', marginTop: 10, fontSize: '1.02rem', lineHeight: 1.6 }}>
+                        Your attendance for <strong style={{ color: 'var(--text-primary)' }}>{session.title}</strong> has been recorded successfully.
                     </p>
                     <div style={{
-                        marginTop: 24,
-                        padding: 16,
-                        background: 'var(--bg-glass)',
-                        borderRadius: 'var(--radius-md)',
-                        border: '1px solid var(--border-subtle)',
+                        marginTop: 28,
+                        padding: 20,
+                        background: 'rgba(0, 229, 184, 0.04)',
+                        borderRadius: 'var(--radius-lg)',
+                        border: '1px solid rgba(0, 229, 184, 0.15)',
                     }}>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                            <strong>{studentName}</strong> • ID: {studentId}
+                        <p style={{ fontSize: '0.95rem', color: 'var(--text-primary)', fontWeight: 600 }}>
+                            {studentName}
                         </p>
-                        <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: 4 }}>
-                            {new Date().toLocaleString()}
+                        <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: 4, fontFamily: 'var(--font-mono)' }}>
+                            ID: {studentId} • {new Date().toLocaleString()}
                         </p>
                     </div>
                 </div>
@@ -134,27 +138,27 @@ export default function AttendPage() {
     return (
         <div className="attend-page">
             <div className="attend-card">
-                <div style={{ textAlign: 'center', marginBottom: 24 }}>
-                    <Link href="/" className="navbar-brand" style={{ justifyContent: 'center', display: 'flex', marginBottom: 20 }}>
+                <div style={{ textAlign: 'center', marginBottom: 28 }}>
+                    <Link href="/" className="navbar-brand" style={{ justifyContent: 'center', display: 'flex', marginBottom: 24 }}>
                         <span className="brand-icon">📋</span>
                         <span>AttendX</span>
                     </Link>
                     <h1>Mark Attendance</h1>
                     <p className="session-title">{session.title}</p>
                     {session.description && (
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{session.description}</p>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>{session.description}</p>
                     )}
                 </div>
 
                 {session.status !== 'active' && (
-                    <div className="alert alert-error" style={{ textAlign: 'center' }}>
-                        This session is no longer accepting attendance.
+                    <div className="alert alert-error" style={{ textAlign: 'center', justifyContent: 'center' }}>
+                        ⚠️ This session is no longer accepting attendance.
                     </div>
                 )}
 
                 {session.status === 'active' && (
                     <>
-                        {error && <div className="alert alert-error">{error}</div>}
+                        {error && <div className="alert alert-error">⚠️ {error}</div>}
 
                         <form onSubmit={handleSubmit}>
                             <div className="input-group">
@@ -170,7 +174,7 @@ export default function AttendPage() {
                                     autoFocus
                                 />
                             </div>
-                            <div className="input-group" style={{ marginTop: 16 }}>
+                            <div className="input-group" style={{ marginTop: 18 }}>
                                 <label htmlFor="student-id">Student ID / Roll Number</label>
                                 <input
                                     id="student-id"
@@ -185,10 +189,15 @@ export default function AttendPage() {
                             <button
                                 type="submit"
                                 className="btn btn-primary w-full"
-                                style={{ marginTop: 24 }}
+                                style={{ marginTop: 28 }}
                                 disabled={submitting}
                             >
-                                {submitting ? 'Marking Attendance...' : '✅ Mark My Attendance'}
+                                {submitting ? (
+                                    <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                        <span className="spinner" style={{ width: '18px', height: '18px', borderWidth: '2px' }} />
+                                        Marking Attendance...
+                                    </span>
+                                ) : '✅ Mark My Attendance'}
                             </button>
                         </form>
                     </>
