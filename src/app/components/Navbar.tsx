@@ -157,7 +157,7 @@ export default function Navbar({ variant = 'auto' }: NavbarProps) {
             className={`navbar modern-navbar ${scrolled ? 'navbar-scrolled' : ''} ${mobileOpen ? 'navbar-mobile-open' : ''}`}
             aria-label="Main Navigation"
         >
-            <div className="container nav-content-wrapper">
+            <div className="nav-content-wrapper">
                 {/* Brand Logo with 3D hover & glow */}
                 <Link
                     href={user ? '/dashboard' : '/'}
@@ -178,6 +178,9 @@ export default function Navbar({ variant = 'auto' }: NavbarProps) {
                         </span>
                     </div>
                 </Link>
+
+                {/* Subtle vertical divider */}
+                <div className="nav-brand-divider" />
 
                 {/* Desktop Navigation Links */}
                 {isLandingGuest ? (
