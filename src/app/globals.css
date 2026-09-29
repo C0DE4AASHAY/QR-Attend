@@ -1597,7 +1597,8 @@ a:hover {
   border-radius: 50%;
   border: 2px solid transparent;
   background: var(--gradient-primary);
-  mask-composite: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   padding: 2px;
