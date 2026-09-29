@@ -149,23 +149,7 @@ export default function AnalyticsPage() {
     };
 
     return (
-        <>
-            <nav className="navbar">
-                <div className="container">
-                    <Link href="/dashboard" className="navbar-brand">
-                        <span className="brand-icon">📋</span>
-                        <span>AttendX</span>
-                    </Link>
-                    <div className="navbar-links">
-                        <Link href="/dashboard">Dashboard</Link>
-                        <Link href="/dashboard/analytics" className="active">Analytics</Link>
-                        <Link href="/dashboard/profile">Profile</Link>
-                        <button onClick={handleLogout}>Logout</button>
-                    </div>
-                </div>
-            </nav>
-
-            <div className="page-container">
+        <div className="page-container">
                 <div className="container">
                     <div className="dashboard-header">
                         <div>
@@ -248,6 +232,5 @@ export default function AnalyticsPage() {
                     </div>
                 </div>
             </div>
-        </>
     );
 }

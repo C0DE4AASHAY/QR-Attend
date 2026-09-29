@@ -318,3 +318,19 @@ export function PieChart(props: IconProps = {}) {
         <path d="M22 12A10 10 0 0 0 12 2v10z" />
     </>);
 }
+
+export function Menu(props: IconProps = {}) {
+    return svg(props, <>
+        <line x1="4" y1="12" x2="20" y2="12" />
+        <line x1="4" y1="6" x2="20" y2="6" />
+        <line x1="4" y1="18" x2="20" y2="18" />
+    </>);
+}
+
+export function X(props: IconProps = {}) {
+    return svg(props, <>
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+    </>);
+}
+

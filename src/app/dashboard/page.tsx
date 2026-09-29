@@ -100,21 +100,6 @@ export default function DashboardPage() {
 
     return (
         <>
-            <nav className="navbar">
-                <div className="container">
-                    <Link href="/dashboard" className="navbar-brand">
-                        <span className="brand-icon">📋</span>
-                        <span>AttendX</span>
-                    </Link>
-                    <div className="navbar-links">
-                        <Link href="/dashboard" className="active">Dashboard</Link>
-                        <Link href="/dashboard/analytics">Analytics</Link>
-                        <Link href="/dashboard/profile">Profile</Link>
-                        <button onClick={handleLogout}>Logout</button>
-                    </div>
-                </div>
-            </nav>
-
             <div className="page-container">
                 <div className="container">
                     <div className="dashboard-header">

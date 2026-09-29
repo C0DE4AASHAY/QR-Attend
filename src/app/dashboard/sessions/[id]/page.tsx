@@ -126,22 +126,7 @@ export default function SessionDetailPage() {
     if (!session) return null;
 
     return (
-        <>
-            <nav className="navbar">
-                <div className="container">
-                    <Link href="/dashboard" className="navbar-brand">
-                        <span className="brand-icon">📋</span>
-                        <span>AttendX</span>
-                    </Link>
-                    <div className="navbar-links">
-                        <Link href="/dashboard">Dashboard</Link>
-                        <Link href="/dashboard/analytics">Analytics</Link>
-                        <Link href="/dashboard/profile">Profile</Link>
-                    </div>
-                </div>
-            </nav>
-
-            <div className="page-container">
+        <div className="page-container">
                 <div className="container">
                     {/* Header */}
                     <div className="detail-header">
@@ -254,6 +239,5 @@ export default function SessionDetailPage() {
                     </div>
                 </div>
             </div>
-        </>
     );
 }

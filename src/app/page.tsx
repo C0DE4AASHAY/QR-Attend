@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Navbar from './components/Navbar';
 
 export default function HomePage() {
     const [mounted, setMounted] = useState(false);
@@ -13,18 +14,7 @@ export default function HomePage() {
     return (
         <main>
             {/* Navbar */}
-            <nav className="navbar">
-                <div className="container">
-                    <Link href="/" className="navbar-brand">
-                        <span className="brand-icon">📋</span>
-                        <span>AttendX</span>
-                    </Link>
-                    <div className="navbar-links">
-                        <Link href="/login">Login</Link>
-                        <Link href="/login" className="btn btn-primary btn-sm">Get Started</Link>
-                    </div>
-                </div>
-            </nav>
+            <Navbar />
 
             {/* Hero */}
             <section className="hero">
